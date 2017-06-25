@@ -1,0 +1,12 @@
+[package]
+name = "cinder"
+version = "0.1.0"
+authors = ["zethra <jediben97@gmail.com>"]
+
+[lib]
+name = "cinder"
+path = "src/lib.rs"
+
+[dependencies]
+serial = "0.3"
+rustbox = "0.9.0"
