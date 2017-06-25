@@ -7,6 +7,7 @@ use std::env;
 use std::time::Duration;
 use std::process::exit;
 use std::thread;
+use std::io::Write;
 use std::sync::mpsc::{channel, Receiver, Sender};
 
 use serial::prelude::*;
@@ -22,6 +23,10 @@ const SETTINGS: serial::PortSettings = serial::PortSettings {
 };
 
 fn main() {
+    if env::args_os().len() < 2 {
+        writeln!(std::io::stderr(), "Use: cinder <serial port>").expect("Failed printing to stderr");
+        exit(-1);
+    }
     let port_str = env::args_os().nth(1).unwrap();
     let (input_tx, input_rx) = channel::<String>();
     let (output_tx, output_rx) = channel::<String>();
