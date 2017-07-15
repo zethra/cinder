@@ -47,7 +47,7 @@ fn main() {
                 match key {
                     Key::Char(c) => screen.write_input(c),
                     Key::Backspace => screen.delete(),
-                    Key::Esc => exit(0),
+                    Key::Esc => break,
                     Key::Enter => input_tx.send(screen.enter()).unwrap(),
                     Key::Up => screen.history_up(),
                     Key::Down => screen.history_down(),
